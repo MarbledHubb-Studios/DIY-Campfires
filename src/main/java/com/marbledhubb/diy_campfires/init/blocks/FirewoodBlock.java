@@ -30,7 +30,7 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     public FirewoodBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
-    private static final VoxelShape DEFAULT = Block.box(0, 0, 5, 16, 13, 11);
+    private static final VoxelShape DEFAULT = Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0);
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
