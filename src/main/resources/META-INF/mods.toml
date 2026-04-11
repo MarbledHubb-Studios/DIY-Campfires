@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="All Rights Reserved"
+
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/"
+
+[[mods]]
+modId="diy_campfires"
+version="1.0.0.0"
+displayName="DIY: Campfires"
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+
+logoFile="diy-campfires-icon-static.png"
+credits="MarbledHubb Studios"
+authors="MarbledNull, WereF0X"
+
+
+description='''A mod that adds a simple building mechanic to Campfires.'''
+
+[[dependencies.diy_campfires]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.diy_campfires]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
