@@ -1,3 +1,6 @@
 {
-  "parent": "diy_campfires:block/firewood"
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "diy_campfires:item/firewood"
+  }
 }

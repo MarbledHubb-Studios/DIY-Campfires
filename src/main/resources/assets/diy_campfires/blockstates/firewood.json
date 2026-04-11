@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_1"
+        "model": "diy_campfires:block/firewood_1"
       },
       "when": {
         "facing": "north",
@@ -11,7 +11,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_1",
+        "model": "diy_campfires:block/firewood_1",
         "y": 90
       },
       "when": {
@@ -21,7 +21,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_1",
+        "model": "diy_campfires:block/firewood_1",
         "y": 180
       },
       "when": {
@@ -31,7 +31,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_1",
+        "model": "diy_campfires:block/firewood_1",
         "y": 270
       },
       "when": {
@@ -41,7 +41,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_2"
+        "model": "diy_campfires:block/firewood_1"
       },
       "when": {
         "facing": "north",
@@ -50,7 +50,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_2",
+        "model": "diy_campfires:block/firewood_2",
         "y": 90
       },
       "when": {
@@ -60,7 +60,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_2",
+        "model": "diy_campfires:block/firewood_2",
         "y": 180
       },
       "when": {
@@ -70,7 +70,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_2",
+        "model": "diy_campfires:block/firewood_2",
         "y": 270
       },
       "when": {
@@ -80,7 +80,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_3"
+        "model": "diy_campfires:block/firewood_2"
       },
       "when": {
         "facing": "north",
@@ -89,7 +89,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_3",
+        "model": "diy_campfires:block/firewood_3",
         "y": 90
       },
       "when": {
@@ -99,7 +99,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_3",
+        "model": "diy_campfires:block/firewood_3",
         "y": 180
       },
       "when": {
@@ -109,7 +109,7 @@
     },
     {
       "apply": {
-        "model": "minecraft:block/pink_petals_3",
+        "model": "diy_campfires:block/firewood_3",
         "y": 270
       },
       "when": {
