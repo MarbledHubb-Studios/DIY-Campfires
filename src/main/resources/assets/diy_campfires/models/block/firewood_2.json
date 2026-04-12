@@ -4,7 +4,7 @@
 	"parent": "block/block",
 	"textures": {
 		"1": "block/campfire_log",
-		"particle": "block/campfire_log"
+		"particle": "block/oak_log"
 	},
 	"elements": [
 		{
