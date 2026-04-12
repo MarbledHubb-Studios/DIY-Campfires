@@ -3,6 +3,8 @@ package com.marbledhubb.diy_campfires.init.blocks;
 import com.marbledhubb.diy_campfires.init.ModBlockStateProperties;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -13,9 +15,7 @@ import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -51,9 +51,35 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        BlockState state = context.getLevel().getBlockState(context.getClickedPos());
-        return state.is(this) ? state.setValue(AMOUNT, Math.min(3, state.getValue(AMOUNT) + 1)) : this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    public InteractionResult use(BlockState state, Level level, BlockPos pos,
+                                 Player player, InteractionHand hand, BlockHitResult hit) {
+
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (stack.getItem() == this.asItem()) {
+            int amount = state.getValue(AMOUNT);
+
+            if (amount >= MAX_LOGS) {
+                level.setBlock(pos,
+                        Blocks.CAMPFIRE.defaultBlockState()
+                                .setValue(CampfireBlock.LIT, false)
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                        3);
+
+            } else {
+                level.setBlock(pos, state.setValue(AMOUNT, amount + 1), 3);
+            }
+
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+
+            level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+            return InteractionResult.SUCCESS;
+        }
+
+        return InteractionResult.PASS;
     }
 
     @Override
