@@ -7,7 +7,7 @@ license="All Rights Reserved"
 [[mods]]
 modId="diy_campfires"
 version="1.0.0.0"
-displayName="DIY: Campfires"
+displayName="DIY Campfires"
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
 
 logoFile="diy-campfires-icon-static.png"

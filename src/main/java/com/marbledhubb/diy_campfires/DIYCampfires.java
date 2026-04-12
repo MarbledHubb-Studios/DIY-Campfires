@@ -22,6 +22,8 @@ public class DIYCampfires
 {
     public static final String MODID = "diy_campfires";
 
+    //mmm wood
+
     public DIYCampfires(FMLJavaModLoadingContext context)
     {
         IEventBus modEventBus = context.getModEventBus();
