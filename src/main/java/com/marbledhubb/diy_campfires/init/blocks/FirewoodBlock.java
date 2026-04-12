@@ -25,10 +25,12 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
+import java.util.List;
 import java.util.Optional;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
@@ -88,7 +90,29 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
+                                       Player player, boolean willHarvest, FluidState fluid) {
+
+        if (!level.isClientSide) {
+            int amount = state.getValue(AMOUNT);
+
+            if (amount > 1) {
+                level.setBlock(pos, state.setValue(AMOUNT, amount - 1), 3);
+
+                if (!player.isCreative())
+                    popResource(level, pos, new ItemStack(this));
+
+                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS,
+                        1.0f, 1.0f);
+
+                level.levelEvent(player, 2001, pos, Block.getId(state));
+
+                return false;
+            }
+        }
+
+        if (!player.isCreative())
+            popResource(level, pos, new ItemStack(this));
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 
