@@ -36,7 +36,7 @@ import java.util.Optional;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
     public static final int MIN_LOGS = 1;
-    public static final int MAX_LOGS = 3;
+    public static final int MAX_LOGS = 4;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty AMOUNT = ModBlockStateProperties.LOG_AMOUNT;
 
@@ -72,10 +72,10 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                         Blocks.CAMPFIRE.defaultBlockState()
                                 .setValue(CampfireBlock.LIT, false)
                                 .setValue(CampfireBlock.FACING, state.getValue(FACING)),
-                        3);
+                        4);
 
             } else {
-                level.setBlock(pos, state.setValue(AMOUNT, amount + 1), 3);
+                level.setBlock(pos, state.setValue(AMOUNT, amount + 1), 4);
             }
 
             if (!player.isCreative()) {
