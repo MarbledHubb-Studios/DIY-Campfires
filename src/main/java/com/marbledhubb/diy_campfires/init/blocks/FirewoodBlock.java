@@ -1,6 +1,7 @@
 package com.marbledhubb.diy_campfires.init.blocks;
 
 import com.marbledhubb.diy_campfires.init.ModBlockStateProperties;
+import com.marbledhubb.diy_campfires.init.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -63,19 +64,14 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                                  Player player, InteractionHand hand, BlockHitResult hit) {
 
         ItemStack stack = player.getItemInHand(hand);
+        int amount = state.getValue(AMOUNT);
 
         if (stack.getItem() == this.asItem()) {
-            int amount = state.getValue(AMOUNT);
 
-            if (amount >= MAX_LOGS) {
-                level.setBlock(pos,
-                        Blocks.CAMPFIRE.defaultBlockState()
-                                .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
-                        4);
-
-            } else {
+            if (amount < MAX_LOGS) {
                 level.setBlock(pos, state.setValue(AMOUNT, amount + 1), 4);
+            } else {
+                return InteractionResult.FAIL;
             }
 
             if (!player.isCreative()) {
@@ -85,6 +81,34 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
             level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
 
             return InteractionResult.SUCCESS;
+        }
+
+        if (amount >= MAX_LOGS) {
+
+            if (stack.is(ModTags.Items.CAMPFIRE_IGNITER)) {
+                level.setBlock(pos,
+                        Blocks.CAMPFIRE.defaultBlockState()
+                                .setValue(CampfireBlock.LIT, false)
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                        4);
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.SUCCESS;
+            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_IGNITER)) {
+                level.setBlock(pos,
+                        Blocks.SOUL_CAMPFIRE.defaultBlockState()
+                                .setValue(CampfireBlock.LIT, false)
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                        4);
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return InteractionResult.SUCCESS;
+            }
+
         }
 
         return InteractionResult.PASS;
