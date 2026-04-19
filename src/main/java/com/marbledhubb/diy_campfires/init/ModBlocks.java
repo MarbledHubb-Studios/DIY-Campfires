@@ -20,6 +20,7 @@ public class ModBlocks {
 
     public static final DeferredBlock FIREWOOD = registerBlock("firewood", () ->
             new FirewoodBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F)));
+
     private static <T extends Block> DeferredBlock registerBlock(String name, Supplier<T> block) {
         DeferredBlock<T> toReturn = (DeferredBlock<T>) BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);

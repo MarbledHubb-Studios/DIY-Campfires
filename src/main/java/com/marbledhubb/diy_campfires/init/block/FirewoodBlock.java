@@ -1,17 +1,22 @@
 package com.marbledhubb.diy_campfires.init.block;
 
 import com.marbledhubb.diy_campfires.init.ModBlockStateProperties;
+import com.marbledhubb.diy_campfires.init.ModTags;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -19,13 +24,14 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
     public static final int MIN_LOGS = 1;
-    public static final int MAX_LOGS = 3;
+    public static final int MAX_LOGS = 4;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty AMOUNT = ModBlockStateProperties.LOG_AMOUNT;
 
@@ -54,12 +60,89 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
+    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
+                                           BlockPos pos, Player player, InteractionHand hand,
+                                           BlockHitResult hit) {
+
+        int amount = state.getValue(AMOUNT);
+
+        if (stack.getItem() == this.asItem()) {
+
+            if (amount < MAX_LOGS) {
+                level.setBlock(pos, state.setValue(AMOUNT, amount + 1), 4);
+            } else {
+                return ItemInteractionResult.FAIL;
+            }
+
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+
+            level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+
+            return ItemInteractionResult.SUCCESS;
+        }
+
+        if (amount >= MAX_LOGS) {
+
+            if (stack.is(ModTags.Items.CAMPFIRE_IGNITER)) {
+                level.setBlock(pos,
+                        Blocks.CAMPFIRE.defaultBlockState()
+                                .setValue(CampfireBlock.LIT, false)
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                        4);
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return ItemInteractionResult.SUCCESS;
+            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_IGNITER)) {
+                level.setBlock(pos,
+                        Blocks.SOUL_CAMPFIRE.defaultBlockState()
+                                .setValue(CampfireBlock.LIT, false)
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                        4);
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return ItemInteractionResult.SUCCESS;
+            }
+
+        }
+
+        return ItemInteractionResult.FAIL;
+    }
+
+    @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, AMOUNT);
     }
 
     @Override
-    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos, Player player, boolean willHarvest, FluidState fluid) {
+    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
+                                       Player player, boolean willHarvest, FluidState fluid) {
+
+        if (!level.isClientSide) {
+            int amount = state.getValue(AMOUNT);
+
+            if (amount > 1) {
+                level.setBlock(pos, state.setValue(AMOUNT, amount - 1), 3);
+
+                if (!player.isCreative())
+                    popResource(level, pos, new ItemStack(this));
+
+                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS,
+                        1.0f, 1.0f);
+
+                level.levelEvent(player, 2001, pos, Block.getId(state));
+
+                return false;
+            }
+        }
+
+        if (!player.isCreative())
+            popResource(level, pos, new ItemStack(this));
         return super.onDestroyedByPlayer(state, level, pos, player, willHarvest, fluid);
     }
 

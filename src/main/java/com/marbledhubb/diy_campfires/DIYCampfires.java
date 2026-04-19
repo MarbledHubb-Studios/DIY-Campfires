@@ -1,6 +1,5 @@
 package com.marbledhubb.diy_campfires;
 
-import com.marbledhubb.diy_campfires.init.ModBlockStateProperties;
 import com.marbledhubb.diy_campfires.init.ModBlocks;
 import com.marbledhubb.diy_campfires.init.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
