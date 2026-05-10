@@ -10,13 +10,12 @@ public class ModTags {
 
     public static class Items {
 
-        public static final TagKey<Item> CAMPFIRE_IGNITER =
-                TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DIYCampfires.MODID, "campfire_igniter"));
+        public static final TagKey<Item> CAMPFIRE_FINISHING_MATERIAL =
+                TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DIYCampfires.MODID, "campfire_finishing_material"));
 
-        public static final TagKey<Item> SOUL_CAMPFIRE_IGNITER =
-                TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DIYCampfires.MODID, "soul_campfire_igniter"));
+        public static final TagKey<Item> SOUL_CAMPFIRE_FINISHING_MATERIAL =
+                TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(DIYCampfires.MODID, "soul_campfire_finishing_material"));
 
     }
-
 
 }

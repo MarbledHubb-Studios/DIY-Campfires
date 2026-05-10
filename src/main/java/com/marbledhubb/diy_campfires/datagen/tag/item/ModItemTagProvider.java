@@ -24,11 +24,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        tag(ModTags.Items.CAMPFIRE_IGNITER)
+        tag(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)
                 .add(Items.COAL)
                 .add(Items.CHARCOAL);
 
-        tag(ModTags.Items.SOUL_CAMPFIRE_IGNITER)
+        tag(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)
                 .add(Items.SOUL_SAND)
                 .add(Items.SOUL_SOIL);
 

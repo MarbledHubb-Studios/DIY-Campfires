@@ -1,3 +1,4 @@
 {
-  "block.diy_campfires.firewood": "Firewood"
+  "block.diy_campfires.firewood": "Firewood",
+  "misc.diy_campfires.firewood.finisher_material_required": "A campfire finisher material is required first."
 }

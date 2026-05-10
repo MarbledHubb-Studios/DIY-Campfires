@@ -6,19 +6,15 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.crafting.CampfireCookingRecipe;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.CampfireBlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -26,14 +22,10 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
-import java.util.Optional;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
     public static final int MIN_LOGS = 1;
@@ -85,22 +77,22 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
 
         if (amount >= MAX_LOGS) {
 
-            if (stack.is(ModTags.Items.CAMPFIRE_IGNITER)) {
+            if (stack.is(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)) {
                 level.setBlock(pos,
                         Blocks.CAMPFIRE.defaultBlockState()
                                 .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
                         4);
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
                 level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return InteractionResult.SUCCESS;
-            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_IGNITER)) {
+            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
                 level.setBlock(pos,
                         Blocks.SOUL_CAMPFIRE.defaultBlockState()
                                 .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
                         4);
                 if (!player.isCreative()) {
                     stack.shrink(1);
