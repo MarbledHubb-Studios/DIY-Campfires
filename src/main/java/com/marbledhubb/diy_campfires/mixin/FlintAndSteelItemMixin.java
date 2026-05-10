@@ -27,7 +27,7 @@ public class FlintAndSteelItemMixin {
 
             if (level.isClientSide) {
                 Minecraft minecraft = Minecraft.getInstance();
-                Component component = Component.translatable("misc.diy_campfires.firewood.finisher_material_required");
+                Component component = Component.translatable("misc.diy_campfires.firewood.finishing_material_required");
                 if (!Objects.equals(((GuiAccessor) minecraft.gui).getOverlayMessageString(), component) || ((GuiAccessor) minecraft.gui).getOverlayMessageTime() <= 0) {
                     minecraft.gui.setOverlayMessage(component, false);
                     minecraft.getNarrator().sayNow(component);
