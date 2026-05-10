@@ -8,7 +8,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -85,22 +84,22 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
 
         if (amount >= MAX_LOGS) {
 
-            if (stack.is(ModTags.Items.CAMPFIRE_IGNITER)) {
+            if (stack.is(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)) {
                 level.setBlock(pos,
                         Blocks.CAMPFIRE.defaultBlockState()
                                 .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
                         4);
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
                 level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return ItemInteractionResult.SUCCESS;
-            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_IGNITER)) {
+            } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
                 level.setBlock(pos,
                         Blocks.SOUL_CAMPFIRE.defaultBlockState()
                                 .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING)),
+                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
                         4);
                 if (!player.isCreative()) {
                     stack.shrink(1);

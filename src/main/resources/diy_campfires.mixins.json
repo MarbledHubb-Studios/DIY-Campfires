@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.marbledhubb.diy_campfires.mixin",
+  "refmap": "diy_campfires.refmap.json",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "FireChargeItemMixin",
+    "FlintAndSteelItemMixin"
+  ],
+  "client": [
+    "GuiAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

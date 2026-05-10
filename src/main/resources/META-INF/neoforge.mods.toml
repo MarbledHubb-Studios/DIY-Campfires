@@ -14,6 +14,9 @@ authors="MarbledNull, WereF0X"
 
 description='''A mod that adds a simple building mechanic to Campfires.'''
 
+[[mixins]]
+config="diy_campfires.mixins.json"
+
 [[dependencies.diy_campfires]]
     modId="neoforge"
     type="required"
