@@ -2,7 +2,6 @@ package com.marbledhubb.diy_campfires.mixin;
 
 import com.marbledhubb.diy_campfires.init.ModBlocks;
 import com.marbledhubb.diy_campfires.init.blocks.FirewoodBlock;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.FireChargeItem;
@@ -14,8 +13,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Objects;
-
 @Mixin(FireChargeItem.class)
 public class FireChargeItemMixin {
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
@@ -26,12 +23,8 @@ public class FireChargeItemMixin {
             if (context.getPlayer() == null || context.getPlayer().isCrouching()) return;
 
             if (level.isClientSide) {
-                Minecraft minecraft = Minecraft.getInstance();
-                Component component = Component.translatable("misc.diy_campfires.firewood.finishing_material_required");
-                if (!Objects.equals(((GuiAccessor) minecraft.gui).getOverlayMessageString(), component) || ((GuiAccessor) minecraft.gui).getOverlayMessageTime() <= 0) {
-                    minecraft.gui.setOverlayMessage(component, false);
-                    minecraft.getNarrator().sayNow(component);
-                }
+                Component component = Component.translatable("block.diy_campfires.firewood.finishing_material_required");
+                context.getPlayer().displayClientMessage(component, true);
             }
 
             cir.setReturnValue(InteractionResult.FAIL);
