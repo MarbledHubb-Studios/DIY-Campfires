@@ -93,7 +93,7 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
-                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return ItemInteractionResult.SUCCESS;
             } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
                 level.setBlock(pos,
@@ -104,7 +104,7 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                 if (!player.isCreative()) {
                     stack.shrink(1);
                 }
-                level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return ItemInteractionResult.SUCCESS;
             }
 
