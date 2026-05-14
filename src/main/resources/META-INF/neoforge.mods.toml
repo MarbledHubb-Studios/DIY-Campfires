@@ -5,9 +5,9 @@ license="All Rights Reserved"
 
 [[mods]]
 modId="diy_campfires"
-version="1.1.0.0"
+version="1.1.1.0"
 displayName="DIY Campfires"
-#displayURL="https://change.me.to.your.mods.homepage.example.invalid/"
+displayURL="https://marbledhubb.com/projects/mods/diy-campfires"
 logoFile="diy-campfires-icon-static.png"
 credits="MarbledHubb Studios"
 authors="MarbledNull, WereF0X, Aimiwi"
