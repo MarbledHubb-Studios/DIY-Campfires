@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(FlintAndSteelItem.class)
 public class FlintAndSteelItemMixin {
     @Inject(method = "useOn", at = @At("HEAD"), cancellable = true)
-    private void onUse(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
+    private void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
         Level level = context.getLevel();
         BlockState blockState = level.getBlockState(context.getClickedPos());
         if (blockState.is(ModBlocks.FIREWOOD) && blockState.getValue(FirewoodBlock.AMOUNT) >= FirewoodBlock.MAX_LOGS) {
