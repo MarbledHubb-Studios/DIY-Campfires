@@ -1,0 +1,71 @@
+name: 🐛 Submit a bug/crash/error
+description: Report a bug or crash
+title: "[Bug] "
+labels: ["Bug"]
+assignees: ["your-username"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out all required fields before submitting.
+
+
+
+  - type: input
+    id: mod-version
+    attributes:
+      label: "Mod version:"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: minecraft-version
+    attributes:
+      label: "Minecraft version:"
+      options:
+        - 1.20.1
+        - 1.21.1
+        - 1.21.4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: modloader
+    attributes:
+      label: "Modloader:"
+      options:
+        - Forge
+        - NeoForge
+    validations:
+      required: true
+
+  - type: input
+    id: modloader-version
+    attributes:
+      label: "Modloader version:"
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: "Environment:"
+      options:
+        - Singleplayer
+        - Multiplayer
+        - World Hosting
+    validations:
+      required: true
+
+  - type: textarea
+    id: crash-log
+    attributes:
+      label: "Crash Report / Latest Log:"
+      description: "Drag a file here or paste from https://gist.github.com/"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description:"
+      placeholder: "Describe the bug..."
+    validations:
+      required: true
