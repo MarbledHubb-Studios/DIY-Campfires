@@ -1,5 +1,6 @@
 package com.marbledhubb.diy_campfires.init.blocks;
 
+import cech12.unlitcampfire.mixinaccess.ICampfireBlockMixin;
 import com.marbledhubb.diy_campfires.init.ModBlockStateProperties;
 import com.marbledhubb.diy_campfires.init.ModTags;
 import net.minecraft.core.BlockPos;
@@ -78,32 +79,33 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
         if (amount >= MAX_LOGS) {
 
             if (stack.is(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)) {
-                level.setBlock(pos,
-                        Blocks.CAMPFIRE.defaultBlockState()
-                                .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
-                        4);
-                if (!player.isCreative()) {
-                    stack.shrink(1);
-                }
-                level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                makeCampfire(Blocks.CAMPFIRE, pos, state, stack, player, level);
                 return InteractionResult.SUCCESS;
             } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
-                level.setBlock(pos,
-                        Blocks.SOUL_CAMPFIRE.defaultBlockState()
-                                .setValue(CampfireBlock.LIT, false)
-                                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite()),
-                        4);
-                if (!player.isCreative()) {
-                    stack.shrink(1);
-                }
-                level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                makeCampfire(Blocks.SOUL_CAMPFIRE, pos, state, stack, player, level);
                 return InteractionResult.SUCCESS;
             }
 
         }
 
         return InteractionResult.PASS;
+    }
+
+    private void makeCampfire(Block campfireBlock, BlockPos pos, BlockState state, ItemStack stack, Player player, Level level) {
+        BlockState campfireState = campfireBlock.defaultBlockState()
+                .setValue(CampfireBlock.LIT, false)
+                .setValue(CampfireBlock.FACING, state.getValue(FACING).getOpposite());
+
+        if (net.minecraftforge.fml.ModList.get().isLoaded("unlitcampfire"))
+            campfireState = campfireState
+                    .setValue(ICampfireBlockMixin.INFINITE, false)
+                    .setValue(ICampfireBlockMixin.RUNS_OUT, false);
+
+        level.setBlock(pos, campfireState, 4);
+        if (!player.isCreative()) {
+            stack.shrink(1);
+        }
+        level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     @Override
