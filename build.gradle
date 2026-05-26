@@ -19,6 +19,13 @@ group = mod_group_id
 
 repositories {
     mavenLocal()
+
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
+        }
+    }
 }
 
 base {
@@ -130,6 +137,8 @@ dependencies {
 
     // Example project dependency using a sister or child project:
     // implementation project(":myproject")
+
+    implementation "curse.maven:unlit-campfire-417553:7210322"
 
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
