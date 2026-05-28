@@ -2,7 +2,6 @@ package com.marbledhubb.diy_campfires.init;
 
 import com.marbledhubb.diy_campfires.DIYCampfires;
 import com.marbledhubb.diy_campfires.init.items.FirewoodItem;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

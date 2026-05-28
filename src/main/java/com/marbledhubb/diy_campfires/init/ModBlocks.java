@@ -2,8 +2,6 @@ package com.marbledhubb.diy_campfires.init;
 
 import com.marbledhubb.diy_campfires.DIYCampfires;
 import com.marbledhubb.diy_campfires.init.blocks.FirewoodBlock;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
