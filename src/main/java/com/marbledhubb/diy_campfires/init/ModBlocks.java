@@ -15,8 +15,7 @@ import java.util.function.Supplier;
 
 
 public class ModBlocks {
-    public static DeferredRegister<Block> BLOCKS =
-            DeferredRegister.createBlocks(DIYCampfires.MODID);
+    public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(DIYCampfires.MODID);
 
     public static final DeferredBlock FIREWOOD = registerBlock("firewood", () ->
             new FirewoodBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F)));
