@@ -2,8 +2,6 @@ package com.marbledhubb.diy_campfires.init;
 
 import com.marbledhubb.diy_campfires.DIYCampfires;
 import com.marbledhubb.diy_campfires.init.block.FirewoodBlock;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -21,14 +19,10 @@ public class ModBlocks {
             new FirewoodBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F)));
 
     private static <T extends Block> DeferredBlock registerBlock(String name, Supplier<T> block) {
-        DeferredBlock<T> toReturn = (DeferredBlock<T>) BLOCKS.register(name, block);
-        registerBlockItem(name, toReturn);
+        DeferredBlock<T> toReturn = BLOCKS.register(name, block);
         return toReturn;
     }
 
-    private static <T extends Block> void registerBlockItem(String name, DeferredBlock<T> block) {
-        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
-    }
 
 
     public static void register(IEventBus eventBus) {
