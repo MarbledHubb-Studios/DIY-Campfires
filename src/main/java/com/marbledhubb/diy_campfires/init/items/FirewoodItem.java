@@ -14,6 +14,6 @@ public class FirewoodItem extends BlockItem {
 
     @Override
     public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
-        return 400;
+        return 300;
     }
 }
