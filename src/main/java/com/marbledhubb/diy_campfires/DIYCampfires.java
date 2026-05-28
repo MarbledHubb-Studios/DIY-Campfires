@@ -33,8 +33,6 @@ public class DIYCampfires
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
-
-        context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     @SubscribeEvent
