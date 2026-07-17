@@ -3,6 +3,6 @@
   "parent": "diy_campfires:block/firewood_1",
   "textures": {
     "1": "beautifulcampfires:block/spruce_campfire_log",
-    "particle": "beautifulcampfires:block/spruce_log"
+    "particle": "block/spruce_log"
   }
 }
