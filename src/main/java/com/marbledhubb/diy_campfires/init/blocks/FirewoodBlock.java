@@ -26,25 +26,32 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
-    public static final int MIN_LOGS = 1;
     public static final int MAX_LOGS = 4;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty AMOUNT = ModBlockStateProperties.LOG_AMOUNT;
 
-    public FirewoodBlock(BlockBehaviour.Properties properties) {
+    private final Block campfireBlock;
+    private final Block soulCampfireBlock;
+
+    public FirewoodBlock(BlockBehaviour.Properties properties, Block campfireBlock, Block soulCampfireBlock) {
         super(properties);
+        this.campfireBlock = campfireBlock;
+        this.soulCampfireBlock = soulCampfireBlock;
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
     }
-    private static final VoxelShape DEFAULT = Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0);
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return switch (pState.getValue(FACING)) {
-            default -> DEFAULT;
-        };
+    public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
+        return Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0);
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(FACING, AMOUNT);
     }
 
     @Override
@@ -53,8 +60,8 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos,
-                                 Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, @NotNull Level level, @NotNull BlockPos pos,
+                                          Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
 
         ItemStack stack = player.getItemInHand(hand);
         int amount = state.getValue(AMOUNT);
@@ -79,10 +86,10 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
         if (amount >= MAX_LOGS) {
 
             if (stack.is(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)) {
-                makeCampfire(Blocks.CAMPFIRE, pos, state, stack, player, level);
+                makeCampfire(campfireBlock, pos, state, stack, player, level);
                 return InteractionResult.SUCCESS;
             } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
-                makeCampfire(Blocks.SOUL_CAMPFIRE, pos, state, stack, player, level);
+                makeCampfire(soulCampfireBlock, pos, state, stack, player, level);
                 return InteractionResult.SUCCESS;
             }
 
@@ -106,11 +113,6 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
             stack.shrink(1);
         }
         level.playSound(player, pos, SoundEvents.SAND_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, AMOUNT);
     }
 
     @Override

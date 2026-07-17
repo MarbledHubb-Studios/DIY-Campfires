@@ -17,11 +17,11 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, DIYCampfires.MODID);
 
     public static final RegistryObject<Block> FIREWOOD = registerBlock("firewood", () ->
-            new FirewoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F)));
+            new FirewoodBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD).noOcclusion().strength(0.5F),
+                    Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE));
 
-    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
-        return toReturn;
+    public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
 

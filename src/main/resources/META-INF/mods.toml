@@ -37,3 +37,10 @@ description='''A mod that adds a simple building mechanic to Campfires.'''
     versionRange="[1.9.1.0,)"
     ordering="NONE"
     side="BOTH"
+
+[[dependencies.diy_campfires]]
+    modId="beautifulcampfires"
+    mandatory=false
+    versionRange="[1.0.1,)"
+    ordering="AFTER"
+    side="BOTH"
