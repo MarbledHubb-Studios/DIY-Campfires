@@ -1,15 +1,11 @@
 {
-  "type": "forge:conditional",
-
+"type": "forge:conditional",
   "recipes": [
     {
       "conditions": [
         {
-          "type": "forge:not",
-          "value": {
-            "type": "forge:mod_loaded",
-            "modid": "beautifulcampfires"
-          }
+          "type": "forge:mod_loaded",
+          "modid": "beautifulcampfires"
         }
       ],
       "recipe": {
@@ -19,11 +15,11 @@
         ],
         "key": {
           "#": {
-            "tag": "minecraft:logs_that_burn"
+            "tag": "minecraft:spruce_log"
           }
         },
         "result": {
-          "item": "diy_campfires:firewood",
+          "item": "diy_campfires:spruce_firewood",
           "count": 3
         }
       }
