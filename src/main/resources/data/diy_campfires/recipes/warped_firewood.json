@@ -1,5 +1,6 @@
 {
   "type": "forge:conditional",
+
   "recipes": [
     {
       "conditions": [
@@ -15,11 +16,11 @@
         ],
         "key": {
           "#": {
-            "item": "minecraft:spruce_log"
+            "item": "minecraft:warped_stem"
           }
         },
         "result": {
-          "item": "diy_campfires:spruce_firewood",
+          "item": "diy_campfires:warped_firewood",
           "count": 3
         }
       }

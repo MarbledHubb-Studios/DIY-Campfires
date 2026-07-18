@@ -1,5 +1,6 @@
 {
   "type": "forge:conditional",
+
   "recipes": [
     {
       "conditions": [
@@ -15,11 +16,11 @@
         ],
         "key": {
           "#": {
-            "item": "minecraft:spruce_log"
+            "item": "minecraft:birch_log"
           }
         },
         "result": {
-          "item": "diy_campfires:spruce_firewood",
+          "item": "diy_campfires:birch_firewood",
           "count": 3
         }
       }
