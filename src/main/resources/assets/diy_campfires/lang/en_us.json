@@ -1,4 +1,14 @@
 {
   "block.diy_campfires.firewood": "Firewood",
+  "block.diy_campfires.acacia_firewood": "AcaciaFirewood",
+  "block.diy_campfires.birch_firewood": "Birch Firewood",
+  "block.diy_campfires.spruce_firewood": "Spruce Firewood",
+  "block.diy_campfires.dark_oak_firewood": "Dark Oak Firewood",
+  "block.diy_campfires.jungle_firewood": "Jungle Firewood",
+  "block.diy_campfires.bamboo_firewood": "Bamboo Firewood",
+  "block.diy_campfires.warped_firewood": "Warped Firewood",
+  "block.diy_campfires.crimson_firewood": "Crimson Firewood",
+  "block.diy_campfires.cherry_firewood": "Cherry Firewood",
+  "block.diy_campfires.mangrove_firewood": "Mangrove Firewood",
   "block.diy_campfires.firewood.finishing_material_required": "A campfire finishing material is required first"
 }
