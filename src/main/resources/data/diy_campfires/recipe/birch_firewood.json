@@ -5,11 +5,8 @@
     {
       "conditions": [
         {
-          "type": "forge:not",
-          "value": {
-            "type": "forge:mod_loaded",
-            "modid": "beautifulcampfires"
-          }
+          "type": "forge:mod_loaded",
+          "modid": "beautifulcampfires"
         }
       ],
       "recipe": {
@@ -19,11 +16,11 @@
         ],
         "key": {
           "#": {
-            "tag": "minecraft:logs_that_burn"
+            "item": "minecraft:birch_log"
           }
         },
         "result": {
-          "id": "diy_campfires:firewood",
+          "id": "diy_campfires:birch_firewood",
           "count": 3
         }
       }
