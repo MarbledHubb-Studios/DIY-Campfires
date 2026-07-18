@@ -1,0 +1,160 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_1"
+      },
+      "when": {
+        "facing": "north",
+        "log_amount": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_1",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "log_amount": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_1",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "log_amount": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_1",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "log_amount": "1|2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_2"
+      },
+      "when": {
+        "facing": "north",
+        "log_amount": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_2",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "log_amount": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_2",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "log_amount": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_2",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "log_amount": "2|3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_3"
+      },
+      "when": {
+        "facing": "north",
+        "log_amount": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_3",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "log_amount": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_3",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "log_amount": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_3",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "log_amount": "3|4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_4"
+      },
+      "when": {
+        "facing": "north",
+        "log_amount": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_4",
+        "y": 90
+      },
+      "when": {
+        "facing": "east",
+        "log_amount": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_4",
+        "y": 180
+      },
+      "when": {
+        "facing": "south",
+        "log_amount": "4"
+      }
+    },
+    {
+      "apply": {
+        "model": "diy_campfires:block/warped_firewood_4",
+        "y": 270
+      },
+      "when": {
+        "facing": "west",
+        "log_amount": "4"
+      }
+    }
+  ]
+}
