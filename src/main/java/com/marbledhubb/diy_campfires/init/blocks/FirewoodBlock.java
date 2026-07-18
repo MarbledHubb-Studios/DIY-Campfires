@@ -78,7 +78,7 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                 stack.shrink(1);
             }
 
-            level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(player, pos, getSoundType(state, level, pos, player).getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
 
             return InteractionResult.SUCCESS;
         }
@@ -127,9 +127,6 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
 
                 if (!player.isCreative())
                     popResource(level, pos, new ItemStack(this));
-
-                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS,
-                        1.0f, 1.0f);
 
                 level.levelEvent(player, 2001, pos, Block.getId(state));
 

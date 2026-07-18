@@ -1,6 +1,5 @@
 package com.marbledhubb.diy_campfires.mixin;
 
-import com.marbledhubb.diy_campfires.init.ModBlocks;
 import com.marbledhubb.diy_campfires.init.blocks.FirewoodBlock;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -19,7 +18,7 @@ public class FireChargeItemMixin {
     private void useOn(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir) {
         Level level = context.getLevel();
         BlockState blockState = level.getBlockState(context.getClickedPos());
-        if (blockState.is(ModBlocks.FIREWOOD.get()) && blockState.getValue(FirewoodBlock.AMOUNT) >= FirewoodBlock.MAX_LOGS) {
+        if (blockState.getBlock() instanceof  FirewoodBlock && blockState.getValue(FirewoodBlock.AMOUNT) >= FirewoodBlock.MAX_LOGS) {
             if (context.getPlayer() == null || context.getPlayer().isCrouching()) return;
 
             if (level.isClientSide) {
