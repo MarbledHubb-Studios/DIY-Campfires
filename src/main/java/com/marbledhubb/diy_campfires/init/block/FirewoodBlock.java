@@ -27,16 +27,21 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class FirewoodBlock extends HorizontalDirectionalBlock {
-    public static final int MIN_LOGS = 1;
     public static final int MAX_LOGS = 4;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final IntegerProperty AMOUNT = ModBlockStateProperties.LOG_AMOUNT;
 
-    public FirewoodBlock(BlockBehaviour.Properties properties) {
+    private final Block campfireBlock;
+    private final Block soulCampfireBlock;
+
+    public FirewoodBlock(BlockBehaviour.Properties properties, Block campfireBlock, Block soulCampfireBlock) {
         super(properties);
+        this.campfireBlock = campfireBlock;
+        this.soulCampfireBlock = soulCampfireBlock;
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(AMOUNT, 1));
     }
 
@@ -45,13 +50,9 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
         return null;
     }
 
-    private static final VoxelShape DEFAULT = Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0);
-
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return switch (pState.getValue(FACING)) {
-            default -> DEFAULT;
-        };
+    public @NotNull VoxelShape getShape(@NotNull BlockState pState, @NotNull BlockGetter pLevel, @NotNull BlockPos pPos, @NotNull CollisionContext pContext) {
+        return Block.box(0.0, 0.0, 0.0, 16.0, 7.0, 16.0);
     }
 
     @Override
@@ -60,9 +61,9 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level,
-                                           BlockPos pos, Player player, InteractionHand hand,
-                                           BlockHitResult hit) {
+    public @NotNull ItemInteractionResult useItemOn(ItemStack stack, BlockState state, @NotNull Level level,
+                                                    @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand,
+                                                    @NotNull BlockHitResult hit) {
 
         int amount = state.getValue(AMOUNT);
 
@@ -78,7 +79,7 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
                 stack.shrink(1);
             }
 
-            level.playSound(player, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 1.0f, 1.0f);
+            level.playSound(player, pos, getSoundType(state, level, pos, player).getPlaceSound(), SoundSource.BLOCKS, 1.0f, 1.0f);
 
             return ItemInteractionResult.SUCCESS;
         }
@@ -86,10 +87,10 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
         if (amount >= MAX_LOGS) {
 
             if (stack.is(ModTags.Items.CAMPFIRE_FINISHING_MATERIAL)) {
-                makeCampfire(Blocks.CAMPFIRE, pos, state, stack, player, level);
+                makeCampfire(campfireBlock, pos, state, stack, player, level);
                 return ItemInteractionResult.SUCCESS;
             } else if (stack.is(ModTags.Items.SOUL_CAMPFIRE_FINISHING_MATERIAL)) {
-                makeCampfire(Blocks.SOUL_CAMPFIRE, pos, state, stack, player, level);
+                makeCampfire(soulCampfireBlock, pos, state, stack, player, level);
                 return ItemInteractionResult.SUCCESS;
             }
 
@@ -121,8 +122,8 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public boolean onDestroyedByPlayer(BlockState state, Level level, BlockPos pos,
-                                       Player player, boolean willHarvest, FluidState fluid) {
+    public boolean onDestroyedByPlayer(@NotNull BlockState state, Level level, @NotNull BlockPos pos,
+                                       @NotNull Player player, boolean willHarvest, @NotNull FluidState fluid) {
 
         if (!level.isClientSide) {
             int amount = state.getValue(AMOUNT);
@@ -132,9 +133,6 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
 
                 if (!player.isCreative())
                     popResource(level, pos, new ItemStack(this));
-
-                level.playSound(null, pos, SoundEvents.WOOD_BREAK, SoundSource.BLOCKS,
-                        1.0f, 1.0f);
 
                 level.levelEvent(player, 2001, pos, Block.getId(state));
 
@@ -148,22 +146,22 @@ public class FirewoodBlock extends HorizontalDirectionalBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState state, LevelAccessor level, BlockPos pos, Rotation direction) {
+    public @NotNull BlockState rotate(@NotNull BlockState state, @NotNull LevelAccessor level, @NotNull BlockPos pos, @NotNull Rotation direction) {
         return super.rotate(state, level, pos, direction);
     }
 
     @Override
-    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public int getFlammability(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return 5;
     }
 
     @Override
-    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public boolean isFlammable(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return true;
     }
 
     @Override
-    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+    public int getFireSpreadSpeed(@NotNull BlockState state, @NotNull BlockGetter level, @NotNull BlockPos pos, @NotNull Direction direction) {
         return 5;
     }
 }
