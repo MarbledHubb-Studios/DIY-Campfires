@@ -121,6 +121,7 @@ configurations {
 
 dependencies {
     implementation "curse.maven:beautiful-campfires-1085950:6162194"
+    implementation "curse.maven:jei-238222:8607685"
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
