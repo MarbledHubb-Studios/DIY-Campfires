@@ -21,9 +21,9 @@ public class FlintAndSteelItemMixin {
         if (blockState.getBlock() instanceof FirewoodBlock && blockState.getValue(FirewoodBlock.AMOUNT) >= FirewoodBlock.MAX_LOGS) {
             if (context.getPlayer() == null || context.getPlayer().isCrouching()) return;
 
-            if (level.isClientSide) {
+            if (level.isClientSide()) {
                 Component component = Component.translatable("block.diy_campfires.firewood.finishing_material_required");
-                context.getPlayer().displayClientMessage(component, true);
+                context.getPlayer().sendOverlayMessage(component);
             }
 
             cir.setReturnValue(InteractionResult.FAIL);

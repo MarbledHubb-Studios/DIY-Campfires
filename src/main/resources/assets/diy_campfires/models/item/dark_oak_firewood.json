@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "diy_campfires:item/dark_oak_firewood"
-  }
-}

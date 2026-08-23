@@ -1,8 +1,10 @@
 package com.marbledhubb.diy_campfires.init.block;
 
 import com.marbledhubb.diy_campfires.DIYCampfires;
-import net.minecraft.Util;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.resources.Identifier;
+import net.minecraft.util.Util;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
@@ -17,11 +19,11 @@ public class BeautifulCampfiresOakFirewoodBlock extends FirewoodBlock {
     }
 
     @Override
-    public @NotNull String getDescriptionId() {
+    public @NotNull MutableComponent getName() {
         if (this.descriptionId == null) {
-            this.descriptionId = Util.makeDescriptionId("block", ResourceLocation.fromNamespaceAndPath(DIYCampfires.MODID, "oak_firewood"));
+            this.descriptionId = Util.makeDescriptionId("block", Identifier.fromNamespaceAndPath(DIYCampfires.MODID, "oak_firewood"));
         }
 
-        return this.descriptionId;
+        return Component.literal(descriptionId);
     }
 }

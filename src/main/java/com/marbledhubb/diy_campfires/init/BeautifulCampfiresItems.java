@@ -4,6 +4,7 @@ import com.marbledhubb.diy_campfires.init.item.FirewoodItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 
 public class BeautifulCampfiresItems {
+    /*
     public static final DeferredItem<FirewoodItem> ACACIA_FIREWOOD = ModItems.ITEMS.registerItem("acacia_firewood", properties -> new FirewoodItem(BeautifulCampfiresBlocks.ACACIA_FIREWOOD.get(), properties));
     public static final DeferredItem<FirewoodItem> BAMBOO_FIREWOOD = ModItems.ITEMS.registerItem("bamboo_firewood", properties -> new FirewoodItem(BeautifulCampfiresBlocks.BAMBOO_FIREWOOD.get(), properties));
     public static final DeferredItem<FirewoodItem> BIRCH_FIREWOOD = ModItems.ITEMS.registerItem("birch_firewood", properties -> new FirewoodItem(BeautifulCampfiresBlocks.BIRCH_FIREWOOD.get(), properties));
@@ -15,6 +16,7 @@ public class BeautifulCampfiresItems {
     public static final DeferredItem<FirewoodItem> SPRUCE_FIREWOOD = ModItems.ITEMS.registerItem("spruce_firewood", properties -> new FirewoodItem(BeautifulCampfiresBlocks.SPRUCE_FIREWOOD.get(), properties));
     public static final DeferredItem<FirewoodItem> WARPED_FIREWOOD = ModItems.ITEMS.registerItem("warped_firewood", properties -> new FirewoodItem(BeautifulCampfiresBlocks.WARPED_FIREWOOD.get(), properties));
 
+     */
     public static void register() {
     }
 }

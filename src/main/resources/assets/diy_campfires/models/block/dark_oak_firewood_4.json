@@ -1,8 +1,0 @@
-{
-  "format_version": "1.9.0",
-  "parent": "diy_campfires:block/firewood_4",
-  "textures": {
-    "1": "beautifulcampfires:block/dark_oak_campfire_log",
-    "particle": "block/dark_oak_log"
-  }
-}

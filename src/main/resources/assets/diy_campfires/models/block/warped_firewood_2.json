@@ -1,8 +1,0 @@
-{
-  "format_version": "1.9.0",
-  "parent": "diy_campfires:block/firewood_2",
-  "textures": {
-    "1": "beautifulcampfires:block/warped_campfire_log",
-    "particle": "block/warped_stem"
-  }
-}

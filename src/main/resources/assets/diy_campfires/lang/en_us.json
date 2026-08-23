@@ -1,15 +1,13 @@
 {
-  "block.diy_campfires.firewood": "Firewood",
-  "block.diy_campfires.oak_firewood": "Oak Firewood",
-  "block.diy_campfires.acacia_firewood": "Acacia Firewood",
-  "block.diy_campfires.birch_firewood": "Birch Firewood",
-  "block.diy_campfires.spruce_firewood": "Spruce Firewood",
-  "block.diy_campfires.dark_oak_firewood": "Dark Oak Firewood",
-  "block.diy_campfires.jungle_firewood": "Jungle Firewood",
-  "block.diy_campfires.bamboo_firewood": "Bamboo Firewood",
-  "block.diy_campfires.warped_firewood": "Warped Firewood",
-  "block.diy_campfires.crimson_firewood": "Crimson Firewood",
-  "block.diy_campfires.cherry_firewood": "Cherry Firewood",
-  "block.diy_campfires.mangrove_firewood": "Mangrove Firewood",
-  "block.diy_campfires.firewood.finishing_material_required": "A campfire finishing material is required first"
+  "itemGroup.examplemod": "Example Mod Tab",
+  "block.examplemod.example_block": "Example Block",
+  "item.examplemod.example_item": "Example Item",
+
+  "examplemod.configuration.title": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml": "Example Mod Configs",
+  "examplemod.configuration.section.examplemod.common.toml.title": "Example Mod Configs",
+  "examplemod.configuration.items": "Item List",
+  "examplemod.configuration.logDirtBlock": "Log Dirt Block",
+  "examplemod.configuration.magicNumberIntroduction": "Magic Number Text",
+  "examplemod.configuration.magicNumber": "Magic Number"
 }

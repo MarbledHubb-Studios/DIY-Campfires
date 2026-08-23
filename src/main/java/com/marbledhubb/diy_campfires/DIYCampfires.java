@@ -36,11 +36,16 @@ public class DIYCampfires
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::creativeModeTabContents);
 
+        /* Not needed, Beautiful Campfires does not have a 26.1.2 version
         boolean isBeautifulCampfiresLoaded =  ModList.get().isLoaded("beautifulcampfires");
 
         if (isBeautifulCampfiresLoaded) BeautifulCampfiresItems.register();
+        */
         ModItems.register(modEventBus);
+
+        /*
         if (isBeautifulCampfiresLoaded) BeautifulCampfiresBlocks.register();
+        */
         ModBlocks.register(modEventBus);
     }
 
@@ -55,6 +60,7 @@ public class DIYCampfires
         {
             addCreativeModeTabEntry(event, ModItems.FIREWOOD);
 
+            /*
             if (!ModList.get().isLoaded("beautifulcampfires")) return;
 
             addCreativeModeTabEntry(event, BeautifulCampfiresItems.ACACIA_FIREWOOD);
@@ -67,6 +73,7 @@ public class DIYCampfires
             addCreativeModeTabEntry(event, BeautifulCampfiresItems.MANGROVE_FIREWOOD);
             addCreativeModeTabEntry(event, BeautifulCampfiresItems.SPRUCE_FIREWOOD);
             addCreativeModeTabEntry(event, BeautifulCampfiresItems.WARPED_FIREWOOD);
+             */
         }
     }
 
@@ -82,7 +89,7 @@ public class DIYCampfires
 
     }
 
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent
