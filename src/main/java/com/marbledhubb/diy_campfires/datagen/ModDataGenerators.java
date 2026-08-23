@@ -11,7 +11,8 @@ import net.neoforged.neoforge.data.event.GatherDataEvent;
 public class ModDataGenerators {
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent.Server event) {
+    public static void gatherData(GatherDataEvent.Client event) {
+
         event.createProvider(
                 ModBlockTagProvider::new
         );

@@ -11,25 +11,37 @@ import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class ModBlocks {
     public static DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(DIYCampfires.MODID);
 
-    public static final DeferredBlock<FirewoodBlock> FIREWOOD = registerBlock("firewood", getOakFirewoodSupplier());
+    public static final DeferredBlock<FirewoodBlock> FIREWOOD =
+            BLOCKS.registerBlock(
+                    "firewood",
+                    properties -> {
 
-    private static Supplier<FirewoodBlock> getOakFirewoodSupplier() {
-        if (ModList.get().isLoaded("beautifulcampfires"))
-            return () -> new BeautifulCampfiresOakFirewoodBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F),
-                    Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
+                        /*if (ModList.get().isLoaded("beautifulcampfires")) {
+                            return new BeautifulCampfiresOakFirewoodBlock(
+                                    properties,
+                                    Blocks.CAMPFIRE,
+                                    Blocks.SOUL_CAMPFIRE
+                            );
+                        }*/
 
-        return () -> new FirewoodBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD).noOcclusion().ignitedByLava().strength(0.5F),
-                        Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE);
-    }
-
-    public static <T extends Block> DeferredBlock<T> registerBlock(String name, Supplier<T> block) {
-        return BLOCKS.register(name, block);
-    }
+                        return new FirewoodBlock(
+                                properties,
+                                Blocks.CAMPFIRE,
+                                Blocks.SOUL_CAMPFIRE
+                        );
+                    },
+                    properties -> properties
+                            .ofFullCopy(Blocks.OAK_WOOD)
+                            .noOcclusion()
+                            .ignitedByLava()
+                            .strength(0.5F)
+            );
 
 
 
