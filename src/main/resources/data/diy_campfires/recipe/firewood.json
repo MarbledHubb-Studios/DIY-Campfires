@@ -13,9 +13,7 @@
     "##"
   ],
   "key": {
-    "#": {
-      "tag": "minecraft:logs_that_burn"
-    }
+    "#": "#minecraft:logs_that_burn"
   },
   "result": {
     "id": "diy_campfires:firewood",
