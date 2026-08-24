@@ -28,7 +28,7 @@ public class DIYCampfires
 {
     public static final String MODID = "diy_campfires";
 
-    //you were expecting the same comment gag here, right?
+    //well, you were right. mmm wood
 
     public DIYCampfires(IEventBus modEventBus, ModContainer modContainer)
     {
