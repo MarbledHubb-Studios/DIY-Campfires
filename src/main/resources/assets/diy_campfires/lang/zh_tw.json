@@ -1,0 +1,15 @@
+{
+  "block.diy_campfires.firewood": "柴火",
+  "block.diy_campfires.oak_firewood": "橡木柴火",
+  "block.diy_campfires.acacia_firewood": "相思木柴火",
+  "block.diy_campfires.birch_firewood": "樺木柴火",
+  "block.diy_campfires.spruce_firewood": "杉木柴火",
+  "block.diy_campfires.dark_oak_firewood": "黑橡木柴火",
+  "block.diy_campfires.jungle_firewood": "叢林木柴火",
+  "block.diy_campfires.bamboo_firewood": "竹子柴火",
+  "block.diy_campfires.warped_firewood": "扭曲蕈柴火",
+  "block.diy_campfires.crimson_firewood": "緋紅蕈柴火",
+  "block.diy_campfires.cherry_firewood": "櫻花木柴火",
+  "block.diy_campfires.mangrove_firewood": "紅樹林木柴火",
+  "block.diy_campfires.firewood.finishing_material_required": "需要先取得營火的製作材料"
+}
