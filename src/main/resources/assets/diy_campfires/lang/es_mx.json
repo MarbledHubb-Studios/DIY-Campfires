@@ -1,0 +1,15 @@
+{
+  "block.diy_campfires.firewood": "Leña",
+  "block.diy_campfires.oak_firewood": "Leña de roble",
+  "block.diy_campfires.acacia_firewood": "Leña de acacia",
+  "block.diy_campfires.birch_firewood": "Leña de abedul",
+  "block.diy_campfires.spruce_firewood": "Leña de abeto",
+  "block.diy_campfires.dark_oak_firewood": "Leña de roble oscuro",
+  "block.diy_campfires.jungle_firewood": "Leña de jungla",
+  "block.diy_campfires.bamboo_firewood": "Leña de bambú",
+  "block.diy_campfires.warped_firewood": "Leña distorsionada",
+  "block.diy_campfires.crimson_firewood": "Leña carmesí",
+  "block.diy_campfires.cherry_firewood": "Leña de cerezo",
+  "block.diy_campfires.mangrove_firewood": "Leña de mangle",
+  "block.diy_campfires.firewood.finishing_material_required": "Primero se requiere un material de acabado para la fogata"
+}
